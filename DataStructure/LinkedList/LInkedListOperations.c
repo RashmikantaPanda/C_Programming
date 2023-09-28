@@ -41,14 +41,14 @@ void createList()
         }
     }
     else
-        printf("List is already created !");
+        printf("\nList is already created !");
 }
 
 void display()
 {
     if (head == NULL)
     {
-        printf("List is Empty !");
+        printf("\nList is Empty !");
     }
     else
     {
@@ -152,12 +152,12 @@ void deleteFirst()
     {
         temp = head;
         head = temp->next;
-        printf("Node with data %d is deleted", temp->data);
+        printf("\nNode with data %d is deleted", temp->data);
         free(temp);
     }
     else
     {
-        printf("List is empty. No Deletion possible !");
+        printf("\nList is empty. No Deletion possible !");
     }
 }
 
@@ -178,7 +178,7 @@ void deleteLast()
     }
     else
     {
-        printf("List is empty. No Deletion possible !");
+        printf("\nList is empty. No Deletion possible !");
     }
 }
 
@@ -209,17 +209,17 @@ void deleteFromPostion()
                 prev->next = temp->next;
             }
             temp->next = NULL;
-            printf("Node deleted at position %d with data %d", position, temp->data);
+            printf("\nNode deleted at position %d with data %d", position, temp->data);
             free(temp);
         }
         else
         {
-            printf("Invalid Position.Deletion is not possible !");
+            printf("\nInvalid Position.Deletion is not possible !");
         }
     }
     else
     {
-        printf("List is empty. No deletion possible !");
+        printf("\nList is empty. No deletion possible !");
     }
 }
 
@@ -235,16 +235,29 @@ void reverseLinkedList()
         {
             ptr = temp->next;
             temp->next = prev;
-            prev=temp;
-            temp=ptr;
+            prev = temp;
+            temp = ptr;
         }
-        head=prev;
+        head = prev;
         printf("\nList is reversed");
     }
     else
     {
         printf("\nList is Empty !");
     }
+}
+
+void countNode()
+{
+    struct node *temp;
+    int count = 0;
+    temp=head;
+    while (temp != NULL)
+    {
+        temp = temp->next;
+        count++;
+    }
+    printf("\nNode count: %d", count);
 }
 
 int main()
@@ -256,7 +269,7 @@ int main()
     {
         printf("\n\n0. Exit \n1. Create LinkedList \n2. Insert at Begining \n3. Insert at End \n4. Insert At Position ");
         printf("\n5. Delete First \n6. Delete Last \n7. Delete from Position");
-        printf("\n8. Reverse List");
+        printf("\n8. Reverse List \n9. Count Nodes");
         printf("\n10. Display \n11. Clear Screen ");
         printf("\nEnter your choice : ");
         scanf("%d", &choice);
@@ -291,6 +304,9 @@ int main()
             break;
         case 8:
             reverseLinkedList();
+            break;
+        case 9:
+            countNode();
             break;
 
         case 10:
